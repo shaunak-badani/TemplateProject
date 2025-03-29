@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import axios from "axios";
 import { Textarea } from "@/components/ui/textarea";
 import BackdropWithSpinner from "@/components/ui/backdropwithspinner";
+import backendClient from "@/backendClient";
 
 const DeepLearning = () => {
 
@@ -12,7 +12,7 @@ const DeepLearning = () => {
 
     const handlePromptInput = async(query: string) => {
         setLoading(true);
-        const response = await axios.get("http://localhost:8000/deep-learning", {
+        const response = await backendClient.get("/deep-learning", {
             params: {
                 query: query
             }
