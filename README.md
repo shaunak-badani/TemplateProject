@@ -24,4 +24,5 @@ fastapi dev main.py
 
 
 - Deployment
+
 If you're deploying on vcm, change the vcm base url in `frontend/.env.production`. You can change the link to the url / ip address of the server you are hosting it on, if using GCP or Azure for deployment.
