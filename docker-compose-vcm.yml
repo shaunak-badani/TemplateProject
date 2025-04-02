@@ -10,3 +10,5 @@ services:
     container_name: backend
     build:
       context: ./backend
+    environment:
+      - API_URL=vcm-45508.vm.duke.edu
