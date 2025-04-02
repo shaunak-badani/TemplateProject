@@ -49,7 +49,7 @@ az group list --output table
 ```
 export RESOURCE_GROUP="DefaultResourceGroup-EUS2" # Change this to resource group available you have
 export APP_SERVICE_PLAN="devilsplan"
-az appservice plan create --name $APP_SERVICE_PLAN --resource-group $RESOURCE_GROUP --sku S1 --is-linux
+az appservice plan create --name $APP_SERVICE_PLAN --resource-group $RESOURCE_GROUP --sku F1 --is-linux
 az appservice plan list --output table
 ```
 3. Upload the docker compose file to azure. This can be done in the cloudshell tab, using "Manage files" > "Download"
@@ -60,7 +60,7 @@ az webapp create --resource-group $RESOURCE_GROUP \
   --plan $APP_SERVICE_PLAN \
   --name $WEBAPP_NAME \
   --multicontainer-config-type compose \
-  --multicontainer-config-file docker-compose-azure.yml \
+  --multicontainer-config-file docker-compose-azure.yml
 ```
 
 5. Create ACR 
