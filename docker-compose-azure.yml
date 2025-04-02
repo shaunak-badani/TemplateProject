@@ -1,14 +1,10 @@
 services:
   frontend:
     container_name: frontend
-    build:
-      context: ./frontend
-      args:
-        API_URL: devils-codex.azurewebsites.net
+    image: codexregistry.azurecr.io/templateproject-frontend:latest
     ports:
       - "80:80"
 
   backend:
     container_name: backend
-    build:
-      context: ./backend
+    image: codexregistry.azurecr.io/templateproject-backend:latest
