@@ -4,7 +4,7 @@ services:
     build:
       context: ./frontend
       args:
-        API_URL=vcm-45508.vm.duke.edu
+        API_URL: localhost
     ports:
       - "80:80"
 
@@ -12,4 +12,3 @@ services:
     container_name: backend
     build:
       context: ./backend
-    

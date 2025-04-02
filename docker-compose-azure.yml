@@ -3,6 +3,8 @@ services:
     container_name: frontend
     build:
       context: ./frontend
+      args:
+        API_URL: devils-codex.azurewebsites.net
     ports:
       - "80:80"
 
@@ -10,5 +12,3 @@ services:
     container_name: backend
     build:
       context: ./backend
-    environment:
-      - API_URL=devils-codex.azurewebsites.net
