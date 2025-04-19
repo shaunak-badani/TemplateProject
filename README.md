@@ -22,8 +22,18 @@ pip install -r requirements.txt
 fastapi dev main.py
 ```
 
+- Database
+```bash
+sudo docker compose -f docker-compose-db.yml up
+```
+To connect to the dockerized db container, 
 
-### Deploym
+```bash
+docker exec -it my-fastapi-db psql -U postgres -d app_db
+```
+
+
+### Deployment
 
 #### VCM
 
