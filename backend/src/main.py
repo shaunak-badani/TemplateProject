@@ -3,8 +3,10 @@ from fastapi.requests import Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
-from models import get_db
-from schema import UserResponse, User
+
+# DB functions
+from models import get_db, DataFetcher
+from schema import UserResponse
 from sqlalchemy.orm import Session
 
 app = FastAPI(root_path='/api')
@@ -81,5 +83,4 @@ def query_deep_learning_model(query: str):
 
 @app.get("/users", response_model=list[UserResponse])
 def get_users(db: Session = Depends(get_db)):
-    users = db.query(User).all()
-    return users
+    return DataFetcher.get_users(db)

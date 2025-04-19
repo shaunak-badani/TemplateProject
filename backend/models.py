@@ -16,3 +16,11 @@ def get_db():
         yield db
     finally:
         db.close()
+
+
+class DataFetcher:
+
+    @classmethod
+    def get_users(cls, db):
+        users = db.query(User).all()
+        return users
