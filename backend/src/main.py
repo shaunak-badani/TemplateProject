@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 app = FastAPI(root_path='/api')
 
@@ -29,7 +30,9 @@ def query_mean_model(query: str):
     # Pass query to some function
     answer = f"Response to the mean query : {query}"
     # answer = f(query) 
-    return {"answer": answer}
+    return JSONResponse(
+        content = { "answer": answer }
+    )
 
 @app.get("/traditional")
 def query_traditional_model(query: str):
@@ -39,7 +42,9 @@ def query_traditional_model(query: str):
     # Pass query to some function
     answer = f"Response to the traditional query : {query}"
     # answer = f(query) 
-    return {"answer": answer}
+    return JSONResponse(
+        content = {"answer": answer}
+    )
 
 
 @app.get("/deep-learning")
@@ -50,4 +55,6 @@ def query_deep_learning_model(query: str):
     # Pass query to some function
     answer = f"Response to the deep learning model query : {query}"
     # answer = f(query) 
-    return {"answer": answer}
+    return JSONResponse(
+        content = {"answer": answer}
+    )
