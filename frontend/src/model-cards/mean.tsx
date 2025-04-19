@@ -24,7 +24,7 @@ const Mean = () => {
                 query: query
             }
         });
-        setResponse(response.data.answer);
+        setResponse(response.data.message);
         setLoading(false);
     }
 
