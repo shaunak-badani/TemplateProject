@@ -3,17 +3,23 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card } from "@/components/ui/card"
 import Traditional from './model-cards/traditional'
 import Mean from './model-cards/mean'
-import { SidebarProvider } from './components/ui/sidebar'
-import Sidebar from './components/custom-sidebar'
+// import { SidebarProvider } from './components/ui/sidebar'
+// import Sidebar from './components/custom-sidebar'
 import Information from './components/information'
+import useGlobalStore from './store/store'
+import ErrorOverlay from './model-cards/error-overlay'
 
 function App() {
+  const error = useGlobalStore(state => state.error);
+  console.log("Error: ", error);
 
   return (
     <>
     <div>
       {/* <SidebarProvider> */}
       {/* <Sidebar> */}
+
+      <ErrorOverlay />
       
       <Card className="header p-6 text-4xl font-extrabold lg:text-4xl">AppName</Card>
         <div className="min-h-screen p-8 pb-8 sm:p-8">      
