@@ -1,8 +1,11 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from fastapi.requests import Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
+from models import get_db
+from schema import UserResponse, User
+from sqlalchemy.orm import Session
 
 app = FastAPI(root_path='/api')
 
@@ -35,7 +38,9 @@ async def custom_http_exception_handler(request: Request, exc: StarletteHTTPExce
 
 @app.get("/")
 async def root():
-    return {"message": "Hello world!"}
+    return JSONResponse(
+        content = {"message": "Hello world!"}
+    )
 
 @app.get("/mean")
 def query_mean_model(query: str):
@@ -73,3 +78,8 @@ def query_deep_learning_model(query: str):
     return JSONResponse(
         content = {"message": answer}
     )
+
+@app.get("/users", response_model=list[UserResponse])
+def get_users(db: Session = Depends(get_db)):
+    users = db.query(User).all()
+    return users
