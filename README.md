@@ -18,8 +18,9 @@ npm run dev
 ```
 python -m venv .venv
 source .venv/bin/activate
+cd backend
 pip install -r requirements.txt
-fastapi dev main.py
+uvicorn src.main:app --reload
 ```
 
 - Database
