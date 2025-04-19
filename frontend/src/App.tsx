@@ -8,6 +8,7 @@ import Mean from './model-cards/mean'
 import Information from './components/information'
 import useGlobalStore from './store/store'
 import ErrorOverlay from './model-cards/error-overlay'
+import { NavigationMenuDemo } from './components/nav-menu'
 
 function App() {
   const error = useGlobalStore(state => state.error);
@@ -27,7 +28,7 @@ function App() {
             AppName
           </div>
           <div className="col-span-1 flex items-center">
-            sdfsdf
+            <NavigationMenuDemo />
           </div>
         </Card>
         <div className="min-h-screen p-8 pb-8 sm:p-8">      
