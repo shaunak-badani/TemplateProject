@@ -21,7 +21,15 @@ function App() {
 
       <ErrorOverlay />
       
-      <Card className="header p-6 text-4xl font-extrabold lg:text-4xl">AppName</Card>
+        <Card className="grid grid-cols-3 grid-gap-4">
+          <div className="col-span-1" />
+          <div className="header p-6 text-4xl font-extrabold lg:text-4xl">
+            AppName
+          </div>
+          <div className="col-span-1 flex items-center">
+            sdfsdf
+          </div>
+        </Card>
         <div className="min-h-screen p-8 pb-8 sm:p-8">      
           <main className="max-w-4xl mx-auto flex flex-col gap-16">
             <div>
