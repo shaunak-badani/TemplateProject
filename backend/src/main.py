@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, status, HTTPException
 from fastapi.requests import Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -24,18 +24,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-@app.exception_handler(StarletteHTTPException)
-async def custom_http_exception_handler(request: Request, exc: StarletteHTTPException):
-    if exc.status_code == 404:
-        return JSONResponse(
-            status_code=404,
-            content={"message": "This API endpoint does not exist."},
-        )
-    return JSONResponse(
-        status_code=exc.status_code,
-        content={"message": str(exc.detail)},
-    )
 
 
 @app.get("/")
@@ -84,3 +72,10 @@ def query_deep_learning_model(query: str):
 @app.get("/users", response_model=list[UserResponse])
 def get_users(db: Session = Depends(get_db)):
     return DataFetcher.get_users(db)
+
+@app.get("/users/{user_id}", response_model = UserResponse)
+def get_user(user_id: int, db: Session = Depends(get_db)):
+    user = DataFetcher.get_user(db, user_id)
+    if not user:
+        raise HTTPException(status_code = status.HTTP_404_NOT_FOUND)
+    return user

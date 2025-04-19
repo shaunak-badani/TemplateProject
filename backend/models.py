@@ -24,3 +24,8 @@ class DataFetcher:
     def get_users(cls, db):
         users = db.query(User).all()
         return users
+    
+    @classmethod
+    def get_user(cls, db, user_id):
+        user = db.query(User).filter(User.id == user_id).first()
+        return user
