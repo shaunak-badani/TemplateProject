@@ -21,7 +21,7 @@ export function NavigationMenuDemo() {
             </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-            <NavigationMenuLink href="/docs" className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink href="/examples" className={navigationMenuTriggerStyle()}>
                 Past examples
             </NavigationMenuLink>
         </NavigationMenuItem>

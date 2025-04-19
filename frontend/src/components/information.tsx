@@ -11,7 +11,7 @@ const Information = () => {
         {   information.map(info => (
 
                 <Card>
-                    <CardHeader>
+                    <CardHeader className="sm:text-sm">
                         <CardTitle className="flex flex-row">
                             <div className="mx-3 my-auto">
                                 <Info className="text-blue-500"/>
